@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,16 @@ Route::prefix('user/')->group(function(){
     Route::get('delete','delete');
    });
 });
+
+
+Route::prefix('admins/')->group(function(){
+    Route::controller(AdminController::class)->group(function(){
+    Route::get('create','store');
+    Route::get('list','index');
+    Route::get('update/{id}','update');
+    Route::get('delete/{id}','destroy');
+   });
+});
+
+
+// Route::resource('admins',AdminController::class);
